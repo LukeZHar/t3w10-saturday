@@ -1,0 +1,30 @@
+{
+  "name": "t3w10-saturday",
+  "version": "1.0.0",
+  "description": "- Jest discussion\r - Write tests with the help of super jest\r - How Github runs tests automatically",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeZHar/t3w10-saturday.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LukeZHar/t3w10-saturday/issues"
+  },
+  "homepage": "https://github.com/LukeZHar/t3w10-saturday#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
