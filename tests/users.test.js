@@ -1,5 +1,5 @@
 // Importing the code that we want to test
-const {app} = require('../src/server.js');
+const { app } = require('../src/server.js');
 
 // Importing a testing helper function from supertest
 const request = require("supertest");
@@ -36,11 +36,11 @@ describe("Users route", () => {
     test("'Create a new user' route returns newly created user", async () => {
         // POST localhost:3300/users/signup
         const response = await request(app)
-                        .post("/users/signup")
-                        .send({
-                            username: "Luke",
-                            password: "1234"
-                        });
+            .post("/users/signup")
+            .send({
+                username: "Luke",
+                password: "1234"
+            });
         expect(response.body.username).toBe("Luke");
         expect(response.body.password).toBe("EncryptedPassword");
 
@@ -49,16 +49,16 @@ describe("Users route", () => {
     test("'Login user' route throws an error when invalid login data is passed", async () => {
         // POST localhost:3300/users/login
         const response = await request(app)
-                        .post("/users/login")
-                        // Ideally, we would set the auth header to be set
-                        // By the value from JWT token
-                        .set(
-                            "Authorization", "Error header value"
-                        )
-                        // .send({
-                        //     username: "Luke",
-                        //     password: "1234"
-                        // });
+            .post("/users/login")
+            // Ideally, we would set the auth header to be set
+            // By the value from JWT token
+            .set(
+                "Authorization", "Error header value"
+            )
+        // .send({
+        //     username: "Luke",
+        //     password: "1234"
+        // });
 
         expect(response.body.authHeaderData).toBeUndefined();
         expect(response.body.status).toBe(500);
@@ -71,21 +71,21 @@ describe("Users route", () => {
         // PUT/PATCH localhost:3300/users/:id
         let targetUserId = "1";
         const response = await request(app)
-                        .patch("/users/" + targetUserId)
-                        .send({
-                            username: "Luke",
-                            password: "abc1234"
-                        });
+            .patch("/users/" + targetUserId)
+            .send({
+                username: "Luke",
+                password: "abc1234"
+            });
     });
 
     test.skip("'Delete user by ID' route returns an acknowledgement message", async () => {
         // DELETE localhost:3300/users/:id
         let targetUserId = "1";
         const response = await request(app)
-                        .delete("/users/" + targetUserId)
-                        .send({
-                            username: "Luke",
-                            password: "abc1234"
-                        });
+            .delete("/users/" + targetUserId)
+            .send({
+                username: "Luke",
+                password: "abc1234"
+            });
     });
 });
