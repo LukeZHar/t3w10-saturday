@@ -23,4 +23,14 @@ app.get('/', (req, res) => {
 const UserRoute = require('./routes/users.js');
 app.use('/users', UserRoute);
 
+app.use((error, req, res, next) => {
+    console.log("Server threw an error:" + error.message);
+
+    res.json({
+        status:500,
+        error: error.message,
+        errorFull: JSON.stringify(error)
+    });
+});
+
 module.exports = {app};
